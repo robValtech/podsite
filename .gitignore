@@ -14,3 +14,7 @@ Thumbs.db
 *.swp
 .vscode/
 .idea/
+
+playwright-report/
+test-results/
+coverage/
