@@ -11,10 +11,10 @@
 
 **Purpose**: Initialize the Next.js static site workspace and baseline tooling.
 
-- [ ] T001 Initialize npm scripts and Next.js dependencies in package.json
-- [ ] T002 Configure Next.js static export behavior in next.config.ts
-- [ ] T003 Create the TypeScript compiler baseline in tsconfig.json
-- [ ] T004 [P] Configure Playwright and Vitest tooling in playwright.config.ts and vitest.config.ts
+- [x] T001 Initialize npm scripts and Next.js dependencies in package.json
+- [x] T002 Configure Next.js static export behavior in next.config.ts
+- [x] T003 Create the TypeScript compiler baseline in tsconfig.json
+- [x] T004 [P] Configure Playwright and Vitest tooling in playwright.config.ts and vitest.config.ts
 
 ---
 
@@ -24,15 +24,15 @@
 
 **⚠️ CRITICAL**: No user story work should start before this phase is complete.
 
-- [ ] T005 Create the site-wide content schema and validation helpers in src/lib/content/schema.ts
-- [ ] T006 [P] Author podcast metadata and featured episode configuration in src/content/site/site.ts
-- [ ] T007 [P] Seed the 20 mocked episode records in src/content/episodes/index.ts
-- [ ] T008 [P] Author About and FAQ page source content in src/content/pages/index.ts
-- [ ] T009 Implement content loading and route-safe lookup utilities in src/lib/content/index.ts
-- [ ] T010 [P] Build the persistent site header and primary navigation in src/components/layout/site-header.tsx
-- [ ] T011 [P] Build the shared site footer and supporting layout chrome in src/components/layout/site-footer.tsx
-- [ ] T012 Implement shared metadata helpers for public routes in src/lib/seo/metadata.ts
-- [ ] T013 Implement shared global accessibility and responsive styles in src/styles/globals.css
+- [x] T005 Create the site-wide content schema and validation helpers in src/lib/content/schema.ts
+- [x] T006 [P] Author podcast metadata and featured episode configuration in src/content/site/site.ts
+- [x] T007 [P] Seed the 20 mocked episode records in src/content/episodes/index.ts
+- [x] T008 [P] Author About and FAQ page source content in src/content/pages/index.ts
+- [x] T009 Implement content loading and route-safe lookup utilities in src/lib/content/index.ts
+- [x] T010 [P] Build the persistent site header and primary navigation in src/components/layout/site-header.tsx
+- [x] T011 [P] Build the shared site footer and supporting layout chrome in src/components/layout/site-footer.tsx
+- [x] T012 Implement shared metadata helpers for public routes in src/lib/seo/metadata.ts
+- [x] T013 Implement shared global accessibility and responsive styles in src/styles/globals.css
 
 **Checkpoint**: Foundation ready. User story implementation can begin.
 
@@ -46,10 +46,10 @@
 
 ### Implementation for User Story 1
 
-- [ ] T014 [P] [US1] Build the featured episode hero component in src/components/episode/featured-episode-hero.tsx
-- [ ] T015 [P] [US1] Build the landing page supporting sections in src/components/layout/home-sections.tsx
-- [ ] T016 [US1] Implement the homepage route and static metadata in src/app/page.tsx
-- [ ] T017 [US1] Implement the landing page visual design and responsive layout in src/app/page.module.css
+- [x] T014 [P] [US1] Build the featured episode hero component in src/components/episode/featured-episode-hero.tsx
+- [x] T015 [P] [US1] Build the landing page supporting sections in src/components/layout/home-sections.tsx
+- [x] T016 [US1] Implement the homepage route and static metadata in src/app/page.tsx
+- [x] T017 [US1] Implement the landing page visual design and responsive layout in src/app/page.module.css
 
 **Checkpoint**: User Story 1 is fully functional and independently testable.
 
@@ -63,13 +63,13 @@
 
 ### Implementation for User Story 2
 
-- [ ] T018 [P] [US2] Build reusable episode card and list primitives in src/components/episode/episode-card.tsx
-- [ ] T019 [P] [US2] Build the episode detail content component in src/components/episode/episode-detail.tsx
-- [ ] T020 [US2] Implement the episodes index route in src/app/episodes/page.tsx
-- [ ] T021 [US2] Implement the episodes index responsive layout in src/app/episodes/page.module.css
-- [ ] T022 [US2] Implement static episode route generation and detail rendering in src/app/episodes/[slug]/page.tsx
-- [ ] T023 [US2] Implement the episode detail responsive layout in src/app/episodes/[slug]/page.module.css
-- [ ] T024 [US2] Implement the invalid-slug recovery experience in src/app/not-found.tsx
+- [x] T018 [P] [US2] Build reusable episode card and list primitives in src/components/episode/episode-card.tsx
+- [x] T019 [P] [US2] Build the episode detail content component in src/components/episode/episode-detail.tsx
+- [x] T020 [US2] Implement the episodes index route in src/app/episodes/page.tsx
+- [x] T021 [US2] Implement the episodes index responsive layout in src/app/episodes/page.module.css
+- [x] T022 [US2] Implement static episode route generation and detail rendering in src/app/episodes/[slug]/page.tsx
+- [x] T023 [US2] Implement the episode detail responsive layout in src/app/episodes/[slug]/page.module.css
+- [x] T024 [US2] Implement the invalid-slug recovery experience in src/app/not-found.tsx
 
 **Checkpoint**: User Stories 1 and 2 work independently, and the full episode library is navigable.
 
@@ -83,12 +83,12 @@
 
 ### Implementation for User Story 3
 
-- [ ] T025 [P] [US3] Build the About page narrative content component in src/components/layout/about-content.tsx
-- [ ] T026 [P] [US3] Build the accessible FAQ item component in src/components/faq/faq-item.tsx
-- [ ] T027 [US3] Implement the About page route in src/app/about/page.tsx
-- [ ] T028 [US3] Implement the About page responsive layout in src/app/about/page.module.css
-- [ ] T029 [US3] Implement the FAQ page route and disclosure behavior in src/app/faq/page.tsx
-- [ ] T030 [US3] Implement the FAQ page responsive layout in src/app/faq/page.module.css
+- [x] T025 [P] [US3] Build the About page narrative content component in src/components/layout/about-content.tsx
+- [x] T026 [P] [US3] Build the accessible FAQ item component in src/components/faq/faq-item.tsx
+- [x] T027 [US3] Implement the About page route in src/app/about/page.tsx
+- [x] T028 [US3] Implement the About page responsive layout in src/app/about/page.module.css
+- [x] T029 [US3] Implement the FAQ page route and disclosure behavior in src/app/faq/page.tsx
+- [x] T030 [US3] Implement the FAQ page responsive layout in src/app/faq/page.module.css
 
 **Checkpoint**: All user stories are independently functional.
 
@@ -98,10 +98,10 @@
 
 **Purpose**: Final refinements that improve multiple stories together.
 
-- [ ] T031 [P] Refine shared social, canonical, and route metadata behavior in src/lib/seo/metadata.ts
-- [ ] T032 [P] Add fallback and production-ready static imagery in public/images/fallback-cover.svg
-- [ ] T033 Improve route-level focus, skip-link, and reduced-motion behavior in src/styles/globals.css
-- [ ] T034 Validate the documented setup and build flow in specs/002-build-podcast-site/quickstart.md
+- [x] T031 [P] Refine shared social, canonical, and route metadata behavior in src/lib/seo/metadata.ts
+- [x] T032 [P] Add fallback and production-ready static imagery in public/images/fallback-cover.svg
+- [x] T033 Improve route-level focus, skip-link, and reduced-motion behavior in src/styles/globals.css
+- [x] T034 Validate the documented setup and build flow in specs/002-build-podcast-site/quickstart.md
 
 ---
 

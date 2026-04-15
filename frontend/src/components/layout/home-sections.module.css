@@ -1,0 +1,90 @@
+.section {
+  padding: var(--space-10) 0;
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.sectionTitle {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  color: var(--foreground);
+}
+
+.viewAll {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.viewAll:hover {
+  text-decoration: underline;
+}
+
+.viewAll:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.episodeGrid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-4);
+}
+
+/* Show intro section */
+.showIntro {
+  padding: var(--space-10) 0;
+  border-top: 1px solid var(--border);
+  background-color: var(--bg-surface);
+}
+
+.introContent {
+  max-width: var(--content-width);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.introTitle {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.introText {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.introLink {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  width: fit-content;
+}
+
+.introLink:hover {
+  text-decoration: underline;
+}
+
+.introLink:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}

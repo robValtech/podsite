@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="Signals and Systems podcast cover">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#080810"/>
+    </radialGradient>
+    <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" rx="32" fill="url(#bgGrad)"/>
+
+  <!-- Glow -->
+  <circle cx="200" cy="200" r="140" fill="url(#glowGrad)"/>
+
+  <!-- Outer ring -->
+  <circle cx="200" cy="200" r="130" fill="none" stroke="#a855f7" stroke-width="1" stroke-opacity="0.25"/>
+
+  <!-- Mid ring -->
+  <circle cx="200" cy="200" r="100" fill="none" stroke="#a855f7" stroke-width="1" stroke-opacity="0.15"/>
+
+  <!-- Inner ring -->
+  <circle cx="200" cy="200" r="70" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-opacity="0.4"/>
+
+  <!-- Center circle filled -->
+  <circle cx="200" cy="200" r="44" fill="#a855f7" fill-opacity="0.15"/>
+  <circle cx="200" cy="200" r="44" fill="none" stroke="#a855f7" stroke-width="2"/>
+
+  <!-- Center glyph dot -->
+  <circle cx="200" cy="200" r="10" fill="#a855f7"/>
+
+  <!-- Signal bars -->
+  <rect x="192" y="60" width="16" height="3" rx="1.5" fill="#a855f7" fill-opacity="0.5"/>
+  <rect x="192" y="337" width="16" height="3" rx="1.5" fill="#a855f7" fill-opacity="0.5"/>
+  <rect x="60" y="192" width="3" height="16" rx="1.5" fill="#a855f7" fill-opacity="0.5"/>
+  <rect x="337" y="192" width="3" height="16" rx="1.5" fill="#a855f7" fill-opacity="0.5"/>
+
+  <!-- Title text -->
+  <text x="200" y="310" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#f1f5f9" letter-spacing="-0.5">Signals &amp; Systems</text>
+  <text x="200" y="335" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#94a3b8" letter-spacing="1">PODCAST</text>
+</svg>
