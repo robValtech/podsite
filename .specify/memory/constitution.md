@@ -1,50 +1,37 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# Podsite Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Static-First Delivery
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+The application MUST ship as a static web app composed of deployable HTML, CSS, JavaScript, and static assets. Features MUST not require a dedicated application server or server-side rendering unless the constitution is amended.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### II. Accessible By Default
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+All user-facing pages MUST use semantic HTML, preserve keyboard navigation, and maintain sufficient text contrast. New UI work MUST include accessible names for interactive controls and meaningful document structure.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### III. Responsive Core Experience
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+The primary user journey MUST work on current desktop and mobile viewport sizes. Content, navigation, and calls to action MUST remain usable without horizontal scrolling at common mobile widths.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### IV. Minimal Client-Side Complexity
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+Client-side JavaScript MUST be used only when it provides clear user value. Prefer HTML and CSS for layout, content, and interaction; add dependencies only when they reduce overall complexity.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### V. Content And Link Integrity
+
+Every change that adds or edits pages MUST leave the site free of broken internal links, missing asset references, and obvious placeholder content in shipped pages.
+
+## Technical Constraints
+
+The codebase SHOULD remain simple enough to build and host as static files on commodity hosting. Preferred defaults are plain HTML, CSS, and JavaScript, or a static-site workflow that outputs static assets. Secrets, server-only logic, and stateful backend dependencies are out of scope unless explicitly added through an amendment.
+
+## Delivery Workflow
+
+Each feature spec MUST define the affected user journey, the pages or components involved, and the acceptance criteria for desktop and mobile behavior. Before completion, changes MUST be reviewed for accessibility, responsive layout, and link correctness through available automated checks or manual verification.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution overrides conflicting local practices for product and implementation decisions. Any exception MUST be documented in the relevant plan with a reason and a simpler alternative considered. Amendments require updating this file and using the new rules for all future plans and tasks.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-04-15 | **Last Amended**: 2026-04-15
