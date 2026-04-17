@@ -56,6 +56,23 @@
 - Cypress: viable but not preferred over Playwright for lightweight cross-browser static-site coverage.
 - Unit-test-heavy strategy: lower value because it misses the exported route experience and browser semantics.
 
+## Framework Version Selection
+
+**Decision**: Pin the Next.js dependency to `^14.2.x` rather than upgrading to v15 or v16.
+
+**Rationale**: Next.js 15 and 16 both introduced breaking changes that add complexity with no benefit for a fully static `output: 'export'` site:
+
+- **Async params/searchParams**: Since v15, `params` and `searchParams` in dynamic route segments are `Promise<>` types that must be `await`-ed. Every `[slug]` page requires boilerplate that provides no value when the same data is available at static build time.
+- **React 19 peer dependency**: v15 requires React 19; v16 requires React 19.2 (View Transitions, `useEffectEvent`, `<Activity/>`). None of these primitives are needed for this site, and the ecosystem compatibility surface is wider.
+- **Cascading removals in v16**: `next lint` command removed, `experimental.ppr` removed, `middleware.ts` deprecated in favour of `proxy.ts`, and Turbopack promoted to the default bundler — all incurring migration cost without delivering value for a static content site.
+
+Next.js 14.2.x is the proven stable baseline for App Router static export. The build was verified clean at `^14.2.0` with the chosen Playwright + Vitest test setup.
+
+**Alternatives considered**:
+
+- Next.js 15: introduces async params breaking change and React 19 peer requirement; rejected for same reasons as v16.
+- Next.js 16 (released October 2025): adds Cache Components, `proxy.ts`, React 19.2, and further removals; none relevant to a static-only site.
+
 ## Performance Direction
 
 **Decision**: Keep the site HTML-first with minimal client components, lightweight imagery, and content rendered directly from prerendered route data.
