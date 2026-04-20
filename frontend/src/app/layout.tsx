@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { RouteChangeHandler } from "@/components/route-change-handler";
 import { generateSiteMetadata } from "@/lib/seo/metadata";
 import "@/styles/globals.css";
 
@@ -14,6 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <RouteChangeHandler />
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>

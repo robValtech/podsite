@@ -28,8 +28,8 @@ _No tasks in this phase._
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T001 Create RouteChangeHandler client component in frontend/src/components/route-change-handler.tsx
-- [ ] T002 Mount RouteChangeHandler in root layout in frontend/src/app/layout.tsx
+- [x] T001 Create RouteChangeHandler client component in frontend/src/components/route-change-handler.tsx
+- [x] T002 Mount RouteChangeHandler in root layout in frontend/src/app/layout.tsx
 
 **Checkpoint**: Focus is now reset to `document.body` after every client-side route change. Manual verification possible via the quickstart steps.
 
@@ -43,8 +43,8 @@ _No tasks in this phase._
 
 ### E2E Tests for User Story 1
 
-- [ ] T003 [US1] Write E2E test: footer link navigation resets focus — in tests/e2e/keyboard-focus.spec.ts
-- [ ] T004 [US1] Write E2E test: header link navigation resets focus — in tests/e2e/keyboard-focus.spec.ts
+- [x] T003 [US1] Write E2E test: footer link navigation resets focus — in tests/e2e/keyboard-focus.spec.ts
+- [x] T004 [US1] Write E2E test: header link navigation resets focus — in tests/e2e/keyboard-focus.spec.ts
 
 **Checkpoint**: US1 acceptance scenarios verified — keyboard focus resets from both header and footer navigation links.
 
@@ -58,9 +58,9 @@ _No tasks in this phase._
 
 ### E2E Tests for User Story 2
 
-- [ ] T005 [US2] Write E2E test: focus resets on Home → Episodes → Episode Detail route transitions — in tests/e2e/keyboard-focus.spec.ts
-- [ ] T006 [US2] Write E2E test: focus resets on About → FAQ → Home route transitions — in tests/e2e/keyboard-focus.spec.ts
-- [ ] T007 [US2] Write E2E test: focus resets when navigating to not-found route — in tests/e2e/keyboard-focus.spec.ts
+- [x] T005 [US2] Write E2E test: focus resets on Home → Episodes → Episode Detail route transitions — in tests/e2e/keyboard-focus.spec.ts
+- [x] T006 [US2] Write E2E test: focus resets on About → FAQ → Home route transitions — in tests/e2e/keyboard-focus.spec.ts
+- [x] T007 [US2] Write E2E test: focus resets when navigating to not-found route — in tests/e2e/keyboard-focus.spec.ts
 
 **Checkpoint**: All primary routes verified for consistent focus-reset behavior.
 
@@ -74,7 +74,7 @@ _No tasks in this phase._
 
 ### E2E Tests for User Story 3
 
-- [ ] T008 [US3] Write E2E test: Router Announcer contains updated page title after route change — in tests/e2e/keyboard-focus.spec.ts
+- [x] T008 [US3] Write E2E test: Router Announcer contains updated page title after route change — in tests/e2e/keyboard-focus.spec.ts
 
 **Checkpoint**: Screen reader announcement confirmed intact alongside focus reset.
 
@@ -84,8 +84,8 @@ _No tasks in this phase._
 
 **Purpose**: Build verification and quickstart validation.
 
-- [ ] T009 Run static export build (`npm run build`) and confirm zero errors in frontend/
-- [ ] T010 Run quickstart.md validation — verify manual keyboard-focus verification steps from specs/003-fix-focus-reset/quickstart.md
+- [x] T009 Run static export build (`npm run build`) and confirm zero errors in frontend/
+- [x] T010 Run quickstart.md validation — verify manual keyboard-focus verification steps from specs/003-fix-focus-reset/quickstart.md
 
 ---
 
