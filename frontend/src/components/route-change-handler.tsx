@@ -12,7 +12,9 @@ export function RouteChangeHandler() {
       isFirstRender.current = false;
       return;
     }
-    document.body.focus();
+    (
+      document.getElementById("focus-reset-target") as HTMLElement | null
+    )?.focus();
   }, [pathname]);
 
   return null;

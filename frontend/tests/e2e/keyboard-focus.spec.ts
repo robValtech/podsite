@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 // US1 — T003: Footer link navigation resets focus
-test("focus resets to body after navigating via footer link", async ({
+test("focus resets to top of page after navigating via footer link", async ({
   page,
 }) => {
   await page.goto("/");
@@ -15,15 +15,13 @@ test("focus resets to body after navigating via footer link", async ({
 
   await page.waitForURL("**/episodes/");
 
-  // After route change, focus should be on body
-  const activeTag = await page.evaluate(() =>
-    document.activeElement?.tagName.toLowerCase(),
-  );
-  expect(activeTag).toBe("body");
+  // After route change, focus should be on the focus-reset target
+  const activeId = await page.evaluate(() => document.activeElement?.id);
+  expect(activeId).toBe("focus-reset-target");
 });
 
 // US1 — T004: Header link navigation resets focus
-test("focus resets to body after navigating via header link", async ({
+test("focus resets to top of page after navigating via header link", async ({
   page,
 }) => {
   await page.goto("/");
@@ -36,10 +34,8 @@ test("focus resets to body after navigating via header link", async ({
 
   await page.waitForURL("**/about/");
 
-  const activeTag = await page.evaluate(() =>
-    document.activeElement?.tagName.toLowerCase(),
-  );
-  expect(activeTag).toBe("body");
+  const activeId = await page.evaluate(() => document.activeElement?.id);
+  expect(activeId).toBe("focus-reset-target");
 });
 
 // US2 — T005: Focus resets on Home → Episodes → Episode Detail transitions
@@ -56,23 +52,20 @@ test("focus resets across Home → Episodes → Episode Detail", async ({
   await episodesLink.press("Enter");
   await page.waitForURL("**/episodes/");
 
-  let activeTag = await page.evaluate(() =>
-    document.activeElement?.tagName.toLowerCase(),
-  );
-  expect(activeTag).toBe("body");
+  let activeId = await page.evaluate(() => document.activeElement?.id);
+  expect(activeId).toBe("focus-reset-target");
 
-  // Episodes → Episode Detail
-  const firstEpisodeLink = page.locator(
-    'a[href="/episodes/attention-economy-hidden-tax/"]',
-  );
+  // Episodes → Episode Detail (use title link, not the 'Listen →' link)
+  const firstEpisodeLink = page.getByRole("link", {
+    name: "Episode 1: The Attention Economy's Hidden Tax",
+    exact: true,
+  });
   await firstEpisodeLink.focus();
   await firstEpisodeLink.press("Enter");
   await page.waitForURL("**/episodes/attention-economy-hidden-tax/");
 
-  activeTag = await page.evaluate(() =>
-    document.activeElement?.tagName.toLowerCase(),
-  );
-  expect(activeTag).toBe("body");
+  activeId = await page.evaluate(() => document.activeElement?.id);
+  expect(activeId).toBe("focus-reset-target");
 });
 
 // US2 — T006: Focus resets on About → FAQ → Home transitions
@@ -85,21 +78,19 @@ test("focus resets across About → FAQ → Home", async ({ page }) => {
   await faqLink.press("Enter");
   await page.waitForURL("**/faq/");
 
-  let activeTag = await page.evaluate(() =>
-    document.activeElement?.tagName.toLowerCase(),
-  );
-  expect(activeTag).toBe("body");
+  let activeId = await page.evaluate(() => document.activeElement?.id);
+  expect(activeId).toBe("focus-reset-target");
 
-  // FAQ → Home
-  const homeLink = page.locator('header[role="banner"] a[href="/"]');
+  // FAQ → Home (use nav 'Home' link, not the logo which also links to /)
+  const homeLink = page
+    .getByRole("navigation", { name: "Primary navigation" })
+    .getByRole("link", { name: "Home" });
   await homeLink.focus();
   await homeLink.press("Enter");
-  await page.waitForURL(/\/$/);
+  await page.waitForURL((url) => new URL(url).pathname === "/");
 
-  activeTag = await page.evaluate(() =>
-    document.activeElement?.tagName.toLowerCase(),
-  );
-  expect(activeTag).toBe("body");
+  activeId = await page.evaluate(() => document.activeElement?.id);
+  expect(activeId).toBe("focus-reset-target");
 });
 
 // US2 — T007: Focus resets when navigating to not-found route
@@ -130,13 +121,11 @@ test("Next.js Router Announcer announces page title after route change", async (
   await episodesLink.press("Enter");
   await page.waitForURL("**/episodes/");
 
-  // The Next.js Router Announcer is a div with role="alert" or aria-live="assertive"
-  // rendered by Next.js at the end of the body
-  const announcer = page.locator("next-route-announcer p");
+  // Next.js 14 App Router renders the announcer as <p id="__next-route-announcer__" aria-live="assertive">
+  const announcer = page.locator("#__next-route-announcer__");
   await expect(announcer).toBeAttached({ timeout: 5000 });
 
   const announcerText = await announcer.textContent();
   expect(announcerText).toBeTruthy();
-  // The announcer should contain the page title of the destination
   expect(announcerText!.length).toBeGreaterThan(0);
 });
