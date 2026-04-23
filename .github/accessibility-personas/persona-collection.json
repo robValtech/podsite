@@ -1,0 +1,166 @@
+{
+  "version": "1.0",
+  "personas": [
+    {
+      "id": "amira-t-pixel-10-android-cafe",
+      "category": "device",
+      "bio": {
+        "firstName": "Amira",
+        "lastName": "Smith",
+        "age": 31,
+        "gender": "female",
+        "location": "Edinburgh, UK",
+        "environment": "cafe"
+      },
+      "hardware": {
+        "device": {
+          "type": "mobile",
+          "name": "Google Pixel 10"
+        },
+        "input": {
+          "primary": "touch",
+          "secondary": "speech"
+        }
+      },
+      "software": {
+        "os": "android",
+        "browser": "chromium"
+      },
+      "accessNeeds": {
+        "hasAccessNeeds": false,
+        "notes": "No specific access need reported. Uses an Android mobile device in typical on-the-go conditions."
+      },
+      "testingRelevance": {
+        "appliesWhen": [
+          "touch target size",
+          "mobile rendering",
+          "Android browser compatibility",
+          "viewport scaling",
+          "form controls on mobile",
+          "network and interruption resilience"
+        ],
+        "priority": "baseline"
+      },
+      "requiredAssertions": [
+        "Layouts remain usable on an Android mobile viewport.",
+        "Touch interactions work reliably on primary controls and navigation.",
+        "Forms and inputs are usable with mobile virtual keyboards.",
+        "Content remains understandable when the viewport changes or the browser UI shifts.",
+        "Essential actions remain available during typical mobile interruptions or constrained conditions."
+      ],
+      "antiPatterns": [
+        "Assuming desktop-only layout widths or interaction patterns.",
+        "Using controls that depend on hover or precise pointer movement.",
+        "Allowing virtual keyboards to obscure critical fields or actions.",
+        "Using fixed elements that consume excessive mobile screen space.",
+        "Creating brittle flows that fail when the viewport changes during interaction."
+      ]
+    },
+    {
+      "id": "rob-a-mouse-macos-office",
+      "category": "device",
+      "bio": {
+        "firstName": "Rob",
+        "lastName": "A.",
+        "age": 34,
+        "gender": "male",
+        "location": "Manchester, UK",
+        "environment": "office"
+      },
+      "hardware": {
+        "device": {
+          "type": "laptop",
+          "name": "MacBook Pro M1"
+        },
+        "input": {
+          "primary": "mouse",
+          "secondary": null
+        }
+      },
+      "software": {
+        "os": "macos",
+        "browser": "webkit"
+      },
+      "accessNeeds": {
+        "hasAccessNeeds": false,
+        "notes": "No limiting health conditions or special access needs reported."
+      },
+      "testingRelevance": {
+        "appliesWhen": [
+          "pointer interactions",
+          "hover states",
+          "click targets",
+          "visual affordance checks"
+        ],
+        "priority": "baseline"
+      },
+      "requiredAssertions": [
+        "Clickable controls respond to pointer interaction.",
+        "Hover and pointer-discoverable affordances are visible when relevant.",
+        "Interactive elements have a clear visual affordance before interaction.",
+        "Pointer interaction does not depend on overly precise hit areas."
+      ],
+      "antiPatterns": [
+        "Relying on hover alone to reveal essential content or actions.",
+        "Using tiny click targets that are difficult to activate reliably.",
+        "Hiding important actions until pointer hover with no alternative access path.",
+        "Using non-semantic clickable elements without appropriate roles and names."
+      ]
+    },
+    {
+      "id": "pam-a-keyboard-windows-home",
+      "category": "situational",
+      "bio": {
+        "firstName": "Pam",
+        "lastName": "A.",
+        "age": 41,
+        "gender": "female",
+        "location": "Leeds, UK",
+        "environment": "home"
+      },
+      "hardware": {
+        "device": {
+          "type": "desktop",
+          "name": "Desktop PC"
+        },
+        "input": {
+          "primary": "keyboard",
+          "secondary": null
+        }
+      },
+      "software": {
+        "os": "windows",
+        "browser": "chromium"
+      },
+      "accessNeeds": {
+        "hasAccessNeeds": false,
+        "notes": "No limiting health conditions or special access needs reported, but currently relies on keyboard for all interaction."
+      },
+      "testingRelevance": {
+        "appliesWhen": [
+          "keyboard navigation",
+          "focus order",
+          "focus visibility",
+          "keyboard activation",
+          "skip links",
+          "dialog and menu navigation"
+        ],
+        "priority": "high"
+      },
+      "requiredAssertions": [
+        "All interactive controls are reachable using only the keyboard.",
+        "Focus order follows the visual and logical reading order.",
+        "Focused elements have a visible focus indicator.",
+        "Buttons, links, menus, and dialogs are operable with Enter and Space where appropriate.",
+        "No interaction requires pointer-specific gestures."
+      ],
+      "antiPatterns": [
+        "Removing the default focus outline without a replacement.",
+        "Creating keyboard traps in dialogs, menus, or custom widgets.",
+        "Using div or span elements as controls without keyboard support.",
+        "Reordering focus with positive tabindex values.",
+        "Revealing essential functionality only on hover."
+      ]
+    }
+  ]
+}

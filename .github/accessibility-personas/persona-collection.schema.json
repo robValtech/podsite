@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/persona-json-2.schema.json",
+  "title": "Accessibility Persona Collection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "personas"
+  ],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+(?:\\.[0-9]+)?$"
+    },
+    "personas": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/persona"
+      }
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stringArray": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    },
+    "persona": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "category",
+        "bio",
+        "hardware",
+        "software",
+        "accessNeeds",
+        "testingRelevance",
+        "requiredAssertions",
+        "antiPatterns"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "device",
+            "situational",
+            "access-need"
+          ]
+        },
+        "bio": {
+          "$ref": "#/$defs/bio"
+        },
+        "hardware": {
+          "$ref": "#/$defs/hardware"
+        },
+        "software": {
+          "$ref": "#/$defs/software"
+        },
+        "accessNeeds": {
+          "$ref": "#/$defs/accessNeeds"
+        },
+        "testingRelevance": {
+          "$ref": "#/$defs/testingRelevance"
+        },
+        "requiredAssertions": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "antiPatterns": {
+          "$ref": "#/$defs/stringArray"
+        }
+      }
+    },
+    "bio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "firstName",
+        "lastName",
+        "age",
+        "gender",
+        "location",
+        "environment"
+      ],
+      "properties": {
+        "firstName": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "lastName": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "age": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 130
+        },
+        "gender": {
+          "type": "string",
+          "enum": [
+            "male",
+            "female",
+            "non-binary"
+          ]
+        },
+        "location": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "environment": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "hardware": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "device",
+        "input"
+      ],
+      "properties": {
+        "device": {
+          "$ref": "#/$defs/device"
+        },
+        "input": {
+          "$ref": "#/$defs/input"
+        }
+      }
+    },
+    "device": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "name"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "mobile",
+            "laptop",
+            "desktop"
+          ]
+        },
+        "name": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary",
+        "secondary"
+      ],
+      "properties": {
+        "primary": {
+          "type": "string",
+          "enum": [
+            "touch",
+            "mouse",
+            "keyboard",
+            "speech"
+          ]
+        },
+        "secondary": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "touch",
+            "mouse",
+            "keyboard",
+            "speech",
+            null
+          ]
+        }
+      }
+    },
+    "software": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "os",
+        "browser"
+      ],
+      "properties": {
+        "os": {
+          "type": "string",
+          "enum": [
+            "windows",
+            "macos",
+            "android",
+            "ios"
+          ]
+        },
+        "browser": {
+          "type": "string",
+          "enum": [
+            "chromium",
+            "firefox",
+            "webkit"
+          ]
+        }
+      }
+    },
+    "accessNeeds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hasAccessNeeds",
+        "notes"
+      ],
+      "properties": {
+        "hasAccessNeeds": {
+          "type": "boolean"
+        },
+        "notes": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "type": {
+          "$ref": "#/$defs/stringArray"
+        }
+      }
+    },
+    "testingRelevance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "appliesWhen",
+        "priority"
+      ],
+      "properties": {
+        "appliesWhen": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "baseline",
+            "high",
+            "critical"
+          ]
+        }
+      }
+    }
+  }
+}
