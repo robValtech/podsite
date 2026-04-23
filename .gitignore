@@ -12,7 +12,8 @@ npm-debug.log*
 Thumbs.db
 *.tmp
 *.swp
-.vscode/
+.vscode/*
+!.vscode/settings.json
 .idea/
 
 playwright-report/
