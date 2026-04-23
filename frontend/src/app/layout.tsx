@@ -15,11 +15,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div
-          id="focus-reset-target"
-          tabIndex={-1}
-          style={{ outline: "none" }}
-        />
         <RouteChangeHandler />
         <a href="#main-content" className="skip-link">
           Skip to main content

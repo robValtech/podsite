@@ -1,10 +1,10 @@
 import { describe, it, expect } from "vitest";
-import { episodes } from "../../frontend/src/content/episodes";
-import { siteConfig } from "../../frontend/src/content/site/site";
+import { episodes } from "@/content/episodes";
+import { siteConfig } from "@/content/site/site";
 import {
   validateEpisodeCollection,
   validateShowConfig,
-} from "../../frontend/src/lib/content/schema";
+} from "@/lib/content/schema";
 
 describe("Episode collection", () => {
   it("contains exactly 20 episodes", () => {

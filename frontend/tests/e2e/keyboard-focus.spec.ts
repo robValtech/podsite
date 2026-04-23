@@ -15,9 +15,10 @@ test("focus resets to top of page after navigating via footer link", async ({
 
   await page.waitForURL("**/episodes/");
 
-  // After route change, focus should be on the focus-reset target
-  const activeId = await page.evaluate(() => document.activeElement?.id);
-  expect(activeId).toBe("focus-reset-target");
+  // After route change, focus should be on main-content
+  await page.waitForFunction(
+    () => document.activeElement?.id === "focus-reset-target",
+  );
 });
 
 // US1 — T004: Header link navigation resets focus
@@ -34,8 +35,9 @@ test("focus resets to top of page after navigating via header link", async ({
 
   await page.waitForURL("**/about/");
 
-  const activeId = await page.evaluate(() => document.activeElement?.id);
-  expect(activeId).toBe("focus-reset-target");
+  await page.waitForFunction(
+    () => document.activeElement?.id === "focus-reset-target",
+  );
 });
 
 // US2 — T005: Focus resets on Home → Episodes → Episode Detail transitions
@@ -52,8 +54,9 @@ test("focus resets across Home → Episodes → Episode Detail", async ({
   await episodesLink.press("Enter");
   await page.waitForURL("**/episodes/");
 
-  let activeId = await page.evaluate(() => document.activeElement?.id);
-  expect(activeId).toBe("focus-reset-target");
+  await page.waitForFunction(
+    () => document.activeElement?.id === "focus-reset-target",
+  );
 
   // Episodes → Episode Detail (use title link, not the 'Listen →' link)
   const firstEpisodeLink = page.getByRole("link", {
@@ -64,8 +67,9 @@ test("focus resets across Home → Episodes → Episode Detail", async ({
   await firstEpisodeLink.press("Enter");
   await page.waitForURL("**/episodes/attention-economy-hidden-tax/");
 
-  activeId = await page.evaluate(() => document.activeElement?.id);
-  expect(activeId).toBe("focus-reset-target");
+  await page.waitForFunction(
+    () => document.activeElement?.id === "focus-reset-target",
+  );
 });
 
 // US2 — T006: Focus resets on About → FAQ → Home transitions
@@ -78,8 +82,9 @@ test("focus resets across About → FAQ → Home", async ({ page }) => {
   await faqLink.press("Enter");
   await page.waitForURL("**/faq/");
 
-  let activeId = await page.evaluate(() => document.activeElement?.id);
-  expect(activeId).toBe("focus-reset-target");
+  await page.waitForFunction(
+    () => document.activeElement?.id === "focus-reset-target",
+  );
 
   // FAQ → Home (use nav 'Home' link, not the logo which also links to /)
   const homeLink = page
@@ -89,8 +94,9 @@ test("focus resets across About → FAQ → Home", async ({ page }) => {
   await homeLink.press("Enter");
   await page.waitForURL((url) => new URL(url).pathname === "/");
 
-  activeId = await page.evaluate(() => document.activeElement?.id);
-  expect(activeId).toBe("focus-reset-target");
+  await page.waitForFunction(
+    () => document.activeElement?.id === "focus-reset-target",
+  );
 });
 
 // US2 — T007: Focus resets when navigating to not-found route
