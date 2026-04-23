@@ -9,8 +9,8 @@
 
 **Purpose**: Confirm the current state of the git index before making any changes.
 
-- [ ] T001 Confirm tracked-but-ignored files by running `git ls-files -ci --exclude-standard` from the repo root and verifying the output lists exactly: `.DS_Store`, `.vscode/settings.json`, `frontend/tests/e2e/keyboard-focus.spec.ts`, `frontend/tests/unit/content-schema.test.ts`
-- [ ] T002 Confirm output folders are not tracked by running `git ls-files | grep -E "playwright-report|test-results|\.next|node_modules"` and verifying the output is empty
+- [x] T001 Confirm tracked-but-ignored files by running `git ls-files -ci --exclude-standard` from the repo root and verifying the output lists exactly: `.DS_Store`, `.vscode/settings.json`, `frontend/tests/e2e/keyboard-focus.spec.ts`, `frontend/tests/unit/content-schema.test.ts`
+- [x] T002 Confirm output folders are not tracked by running `git ls-files | grep -E "playwright-report|test-results|\.next|node_modules"` and verifying the output is empty
 
 **Checkpoint**: Baseline state confirmed — proceed with edits.
 
@@ -22,7 +22,7 @@
 
 **⚠️ CRITICAL**: T003 MUST be complete before T004.
 
-- [ ] T003 [US2] Edit `.gitignore` at the repo root: (1) remove the `frontend/tests/` line, (2) add `!.vscode/settings.json` on a new line directly after the `.vscode/` line, (3) remove duplicate entries for `*.log`, `*.swp`, `coverage/`, and the second `.vscode/` block with its `# VS Code` comment. The final file must match the target state in `research.md`.
+- [x] T003 [US2] Edit `.gitignore` at the repo root: (1) remove the `frontend/tests/` line, (2) add `!.vscode/settings.json` on a new line directly after the `.vscode/` line, (3) remove duplicate entries for `*.log`, `*.swp`, `coverage/`, and the second `.vscode/` block with its `# VS Code` comment. The final file must match the target state in `research.md`.
 
 **Checkpoint**: `.gitignore` is corrected — safe to run index operations.
 
@@ -34,9 +34,9 @@
 
 **Independent Test**: `git ls-files -ci --exclude-standard` returns no lines containing `.DS_Store` or `.vscode/settings.json`. `git ls-files | grep ".vscode/settings"` shows `.vscode/settings.json` is tracked.
 
-- [ ] T004 [US1] Run `git rm --cached .DS_Store` from the repo root to remove the file from the git index (file must remain on disk)
-- [ ] T005 [US1] Verify `.DS_Store` is removed: `git ls-files | grep "\.DS_Store"` returns empty
-- [ ] T006 [US1] Verify `.vscode/settings.json` is still tracked: `git ls-files | grep ".vscode/settings"` returns `.vscode/settings.json`
+- [x] T004 [US1] Run `git rm --cached .DS_Store` from the repo root to remove the file from the git index (file must remain on disk)
+- [x] T005 [US1] Verify `.DS_Store` is removed: `git ls-files | grep "\.DS_Store"` returns empty
+- [x] T006 [US1] Verify `.vscode/settings.json` is still tracked: `git ls-files | grep ".vscode/settings"` returns `.vscode/settings.json`
 
 **Checkpoint**: `.DS_Store` untracked. `.vscode/settings.json` cleanly tracked. US1 complete.
 
@@ -50,8 +50,8 @@
 
 > Note: The `.gitignore` edit for this story was done in T003 (foundational). Tasks here verify the outcome.
 
-- [ ] T007 [US2] Verify source test files are tracked and not ignored: run `git ls-files -ci --exclude-standard` and confirm neither `frontend/tests/e2e/keyboard-focus.spec.ts` nor `frontend/tests/unit/content-schema.test.ts` appears in the output
-- [ ] T008 [US2] Verify both test files appear as tracked: `git ls-files | grep "frontend/tests"` must return both `frontend/tests/e2e/keyboard-focus.spec.ts` and `frontend/tests/unit/content-schema.test.ts`
+- [x] T007 [US2] Verify source test files are tracked and not ignored: run `git ls-files -ci --exclude-standard` and confirm neither `frontend/tests/e2e/keyboard-focus.spec.ts` nor `frontend/tests/unit/content-schema.test.ts` appears in the output
+- [x] T008 [US2] Verify both test files appear as tracked: `git ls-files | grep "frontend/tests"` must return both `frontend/tests/e2e/keyboard-focus.spec.ts` and `frontend/tests/unit/content-schema.test.ts`
 
 **Checkpoint**: Source test files correctly tracked. US2 complete.
 
@@ -63,9 +63,9 @@
 
 **Independent Test**: `git ls-files -ci --exclude-standard` returns empty. `git status` shows clean working tree.
 
-- [ ] T009 [US3] Run `git ls-files -ci --exclude-standard` and confirm the output is completely empty (zero lines)
-- [ ] T010 [US3] Confirm output folders are still not tracked: `git ls-files | grep -E "playwright-report|test-results|\.next|coverage"` must return empty
-- [ ] T011 [US3] Stage all changes: `git add .gitignore` (`.DS_Store` removal is already staged by `git rm --cached`)
+- [x] T009 [US3] Run `git ls-files -ci --exclude-standard` and confirm the output is completely empty (zero lines)
+- [x] T010 [US3] Confirm output folders are still not tracked: `git ls-files | grep -E "playwright-report|test-results|\.next|coverage"` must return empty
+- [x] T011 [US3] Stage all changes: `git add .gitignore` (`.DS_Store` removal is already staged by `git rm --cached`)
 
 **Checkpoint**: All acceptance criteria met — ready to commit.
 
@@ -75,8 +75,8 @@
 
 **Purpose**: Apply the change as a single, reviewable commit on the feature branch.
 
-- [ ] T012 Commit all staged changes with message: `chore: fix gitignore and untrack ignored files` — body: remove frontend/tests/ rule (incorrectly ignored source test files), add !.vscode/settings.json negation (settings.json contains project-level Speckit config), untrack .DS_Store via git rm --cached, remove duplicate .gitignore entries
-- [ ] T013 Run final validation: `git ls-files -ci --exclude-standard` returns empty; `git status` shows clean working tree (only the feature branch commit ahead)
+- [x] T012 Commit all staged changes with message: `chore: fix gitignore and untrack ignored files` — body: remove frontend/tests/ rule (incorrectly ignored source test files), add !.vscode/settings.json negation (settings.json contains project-level Speckit config), untrack .DS_Store via git rm --cached, remove duplicate .gitignore entries
+- [x] T013 Run final validation: `git ls-files -ci --exclude-standard` returns empty; `git status` shows clean working tree (only the feature branch commit ahead)
 
 ---
 
