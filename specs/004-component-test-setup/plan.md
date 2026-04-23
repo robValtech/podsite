@@ -5,12 +5,12 @@
 
 ## Summary
 
-Add a co-located component testing stack to the frontend using React Testing Library, jsdom, user-event, and jest-axe. Vitest is updated to run jsdom for `src/**/*.test.tsx` files while keeping node environment for existing unit tests. Three shared utilities (render wrapper, DOM matcher setup, accessibility helper) provide a consistent test-authoring baseline. A reference test for `FAQItem` demonstrates and validates the full stack. A pre-existing `aria-labelledby` defect in `FAQItem` will be surfaced and fixed as part of this feature.
+Add a co-located component testing stack to the frontend using React Testing Library, jsdom, user-event, and vitest-axe. Vitest is updated to run jsdom for `src/**/*.test.tsx` files while keeping node environment for existing unit tests. Three shared utilities (render wrapper, DOM matcher setup, accessibility helper) provide a consistent test-authoring baseline. A reference test for `FAQItem` demonstrates and validates the full stack. A pre-existing `aria-labelledby` defect in `FAQItem` will be surfaced and fixed as part of this feature.
 
 ## Technical Context
 
 **Language/Version**: TypeScript 5.x / Node.js 20 LTS
-**Primary Dependencies**: Next.js 14, React 18, Vitest 2.1.x, @vitejs/plugin-react, @testing-library/react, @testing-library/user-event, @testing-library/jest-dom, jest-axe, jsdom
+**Primary Dependencies**: Next.js 14, React 18, Vitest 2.1.x, @vitejs/plugin-react, @testing-library/react, @testing-library/user-event, @testing-library/jest-dom, vitest-axe, jsdom
 **Storage**: N/A
 **Testing**: Vitest 2.1.x (unit + component), Playwright 1.48.x (E2E)
 **Target Platform**: Browser simulated via jsdom in test environment; Next.js 14 static site in production
@@ -23,13 +23,13 @@ Add a co-located component testing stack to the frontend using React Testing Lib
 
 _GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
-| Principle                          | Status | Notes                                                                                       |
-| ---------------------------------- | ------ | ------------------------------------------------------------------------------------------- |
-| I. Static-First Delivery           | PASS   | All new packages are devDependencies; zero production runtime impact                        |
-| II. Accessible By Default          | PASS   | This feature directly enforces accessibility: jest-axe assertions run at every key UI state |
-| III. Responsive Core Experience    | N/A    | Test infrastructure; no UI pages added                                                      |
-| IV. Minimal Client-Side Complexity | PASS   | No new client-side JS; test deps excluded from production bundle                            |
-| V. Content And Link Integrity      | N/A    | No pages, links, or assets affected                                                         |
+| Principle                          | Status | Notes                                                                                         |
+| ---------------------------------- | ------ | --------------------------------------------------------------------------------------------- |
+| I. Static-First Delivery           | PASS   | All new packages are devDependencies; zero production runtime impact                          |
+| II. Accessible By Default          | PASS   | This feature directly enforces accessibility: vitest-axe assertions run at every key UI state |
+| III. Responsive Core Experience    | N/A    | Test infrastructure; no UI pages added                                                        |
+| IV. Minimal Client-Side Complexity | PASS   | No new client-side JS; test deps excluded from production bundle                              |
+| V. Content And Link Integrity      | N/A    | No pages, links, or assets affected                                                           |
 
 **Post-Phase-1 Constitution Check**: PASS — design adds no server dependencies, no runtime client code, and strengthens Principle II with automated per-state accessibility gates.
 
@@ -56,9 +56,9 @@ frontend/
 ├── vitest.config.ts                      # Updated: jsdom env + new include pattern
 └── src/
     ├── test/
-    │   ├── setup.ts                      # NEW: global matchers + cleanup
+    │   ├── setup.ts                      # NEW: global matchers + cleanup (vitest-axe/matchers)
     │   ├── render.tsx                    # NEW: shared RTL render wrapper
-    │   └── accessibility.ts             # NEW: checkA11y helper (jest-axe)
+    │   └── a11y.ts                       # NEW: checkA11y helper (vitest-axe)
     └── components/
         └── faq/
             ├── faq-item.tsx              # FIX: add id to button (aria-labelledby defect)

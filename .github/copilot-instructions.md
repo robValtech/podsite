@@ -3,6 +3,7 @@
 Auto-generated from all feature plans. Last updated: 2026-04-23
 
 ## Active Technologies
+
 - TypeScript 5.x on Node.js 20 LTS + Next.js 14 (App Router), React 18 (003-fix-focus-reset)
 - TypeScript 5.x / Node.js 20 LTS + Next.js 14, React 18, Vitest 2.1.x, @vitejs/plugin-react, @testing-library/react, @testing-library/user-event, @testing-library/jest-dom, jest-axe, jsdom (004-component-test-setup)
 
@@ -13,7 +14,7 @@ Auto-generated from all feature plans. Last updated: 2026-04-23
 ```text
 backend/
 frontend/
-tests/
+frontend/tests/
 ```
 
 ## Commands
@@ -25,6 +26,7 @@ npm test && npm run lint
 TypeScript 5.x on Node.js 20 LTS: Follow standard conventions
 
 ## Recent Changes
+
 - 004-component-test-setup: Added TypeScript 5.x / Node.js 20 LTS + Next.js 14, React 18, Vitest 2.1.x, @vitejs/plugin-react, @testing-library/react, @testing-library/user-event, @testing-library/jest-dom, jest-axe, jsdom
 - 003-fix-focus-reset: Added TypeScript 5.x on Node.js 20 LTS + Next.js 14 (App Router), React 18
 

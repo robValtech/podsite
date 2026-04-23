@@ -2,7 +2,7 @@
 
 **Feature Branch**: `004-component-test-setup`
 **Created**: 2026-04-23
-**Status**: Draft
+**Status**: Ready
 **Input**: User description: "Set up the repo for component testing. The component testing stack will use react testing library, jsdom, user-event and axe-core. Update the vite and vitest config to accommodate for the component testing but make sure the existing e2e and unit testing does not break. Component tests to be co-located with the component code."
 
 ## User Scenarios & Testing _(mandatory)_

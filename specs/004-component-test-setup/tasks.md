@@ -11,8 +11,8 @@
 
 **Purpose**: Install dependencies and update the test runner configuration. All subsequent phases depend on this being complete.
 
-- [ ] T001 Install 5 devDependencies in `frontend/package.json`: `@testing-library/react`, `@testing-library/jest-dom`, `@testing-library/user-event`, `vitest-axe`, `jsdom`
-- [ ] T002 Update `frontend/vitest.config.ts`: add `@vitejs/plugin-react` to `plugins`, add `environmentMatchGlobs: [["src/**/*.test.tsx", "jsdom"]]`, add `"./src/**/*.test.tsx"` to `include`, add `setupFiles: ["./src/test/setup.ts"]`
+- [x] T001 Install 5 devDependencies in `frontend/package.json`: `@testing-library/react`, `@testing-library/jest-dom`, `@testing-library/user-event`, `vitest-axe`, `jsdom`
+- [x] T002 Update `frontend/vitest.config.ts`: add `@vitejs/plugin-react` to `plugins`, add `environmentMatchGlobs: [["src/**/*.test.tsx", "jsdom"]]`, add `"./src/**/*.test.tsx"` to `include`, add `setupFiles: ["./src/test/setup.ts"]`
 
 ---
 
@@ -22,8 +22,8 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T003 [P] Create `frontend/src/test/setup.ts`: import and extend `expect` with `@testing-library/jest-dom` matchers, import and extend `expect` with `vitest-axe` `toHaveNoViolations` matcher, register `afterEach(cleanup)` from `@testing-library/react`
-- [ ] T004 [P] Create `frontend/src/test/render.tsx`: re-export `render`, `screen`, `within`, `waitFor`, `act` from `@testing-library/react`; re-export `userEvent` as default re-export from `@testing-library/user-event`; re-export types `RenderResult` and `RenderOptions`
+- [x] T003 [P] Create `frontend/src/test/setup.ts`: import and extend `expect` with `@testing-library/jest-dom` matchers, import and extend `expect` with `vitest-axe` `toHaveNoViolations` matcher, register `afterEach(cleanup)` from `@testing-library/react`
+- [x] T004 [P] Create `frontend/src/test/render.tsx`: re-export `render`, `screen`, `within`, `waitFor`, `act` from `@testing-library/react`; re-export `userEvent` as default re-export from `@testing-library/user-event`; re-export types `RenderResult` and `RenderOptions`
 
 **Checkpoint**: Foundation ready — unit tests still pass (`npm test`), shared utilities importable, jsdom available for `src/**/*.test.tsx` files
 
@@ -35,7 +35,7 @@
 
 **Independent Test**: Create `frontend/src/components/faq/faq-item.test.tsx` and run `npm test`. The test must discover and execute, render `FAQItem`, query the button by accessible role, simulate a click, and assert `aria-expanded` toggles from `false` to `true`. No axe assertions in this phase.
 
-- [ ] T005 [US1] Create `frontend/src/components/faq/faq-item.test.tsx` with a `describe("FAQItem")` block containing: (a) a test asserting the button renders with `aria-expanded="false"` and the answer region is hidden on initial render; (b) a test that uses `userEvent.setup()` to click the button and asserts `aria-expanded="true"` and the region becomes visible; import `render`, `screen`, `userEvent` from `@/test/render`; import `FAQItem` from `./faq-item`
+- [x] T005 [US1] Create `frontend/src/components/faq/faq-item.test.tsx` with a `describe("FAQItem")` block containing: (a) a test asserting the button renders with `aria-expanded="false"` and the answer region is hidden on initial render; (b) a test that uses `userEvent.setup()` to click the button and asserts `aria-expanded="true"` and the region becomes visible; import `render`, `screen`, `userEvent` from `@/test/render`; import `FAQItem` from `./faq-item`
 
 **Checkpoint**: `npm test` passes — `faq-item.test.tsx` discovered and green, existing `tests/unit/content-schema.test.ts` still passes
 
@@ -47,9 +47,9 @@
 
 **Independent Test**: Add `checkA11y` calls to the `FAQItem` test — one after initial render, one after click. Both must pass. First confirm the expanded-state check fails (due to the pre-existing `aria-labelledby` defect), then fix the defect, then confirm both pass.
 
-- [ ] T006 [P] [US2] Create `frontend/src/test/a11y.ts`: export `async function checkA11y(container: HTMLElement): Promise<void>` that calls `axe(container)` from `vitest-axe` and asserts `expect(results).toHaveNoViolations()`; no configuration parameters accepted
-- [ ] T007 [P] [US2] Fix `frontend/src/components/faq/faq-item.tsx`: add `id={\`faq-question-${entry.id}\`}`to the`<button>`element so the`aria-labelledby` reference on the answer region resolves correctly
-- [ ] T008 [US2] Extend `frontend/src/components/faq/faq-item.test.tsx`: add `import { checkA11y } from "@/test/a11y"` and add `await checkA11y(container)` as the final assertion in both the initial-render test (collapsed state) and the post-click test (expanded state)
+- [x] T006 [P] [US2] Create `frontend/src/test/a11y.ts`: export `async function checkA11y(container: HTMLElement): Promise<void>` that calls `axe(container)` from `vitest-axe` and asserts `expect(results).toHaveNoViolations()`; no configuration parameters accepted
+- [x] T007 [P] [US2] Fix `frontend/src/components/faq/faq-item.tsx`: add `id={\`faq-question-${entry.id}\`}`to the`<button>`element so the`aria-labelledby` reference on the answer region resolves correctly
+- [x] T008 [US2] Extend `frontend/src/components/faq/faq-item.test.tsx`: add `import { checkA11y } from "@/test/a11y"` and add `await checkA11y(container)` as the final assertion in both the initial-render test (collapsed state) and the post-click test (expanded state)
 
 **Checkpoint**: `npm test` passes — both `checkA11y` calls are green; the `aria-labelledby` defect is confirmed fixed
 
@@ -61,8 +61,8 @@
 
 **Independent Test**: Run `npm test` (all Vitest tests) and `npm run test:e2e` (Playwright) immediately after completing Phases 1–4. All pre-existing tests must pass with no changes to their source.
 
-- [ ] T009 [P] [US3] Verify `frontend/tests/unit/content-schema.test.ts` passes unmodified in node environment by running `npm test` and confirming the unit test is included in output and green
-- [ ] T010 [P] [US3] Verify `frontend/tests/e2e/keyboard-focus.spec.ts` passes unmodified by running `npm run test:e2e` and confirming all 6 Playwright test cases are green
+- [x] T009 [P] [US3] Verify `frontend/tests/unit/content-schema.test.ts` passes unmodified in node environment by running `npm test` and confirming the unit test is included in output and green
+- [x] T010 [P] [US3] Verify `frontend/tests/e2e/keyboard-focus.spec.ts` passes unmodified by running `npm run test:e2e` and confirming all 6 Playwright test cases are green
 
 **Checkpoint**: All three test types pass — unit (node env), component (jsdom env), E2E (Playwright)
 
@@ -72,9 +72,9 @@
 
 **Purpose**: Consistency and documentation alignment across the design artifacts.
 
-- [ ] T011 Update `frontend/src/test/setup.ts` import comment to reference `vitest-axe` (not `jest-axe`) as the axe matcher source, confirming no type augmentation `.d.ts` file is needed
-- [ ] T012 [P] Update `specs/004-component-test-setup/spec.md` status from `Draft` to `Ready`
-- [ ] T012 [P] Update `specs/004-component-test-setup/plan.md` Summary and Primary Dependencies to reference `vitest-axe` instead of `jest-axe`
+- [x] T011 Update `frontend/src/test/setup.ts` import comment to reference `vitest-axe`
+- [x] T012 [P] Update `specs/004-component-test-setup/spec.md` status from `Draft` to `Ready`
+- [x] T013 [P] Update `specs/004-component-test-setup/plan.md` Summary and Primary Dependencies to reference `vitest-axe` instead of `jest-axe`
 
 ---
 

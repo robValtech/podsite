@@ -15,6 +15,7 @@ export function FAQItem({ entry }: FAQItemProps) {
     <div className={`${styles.item} ${isOpen ? styles.itemOpen : ""}`}>
       <h3 className={styles.questionWrapper}>
         <button
+          id={`faq-question-${entry.id}`}
           type="button"
           className={styles.question}
           aria-expanded={isOpen}
