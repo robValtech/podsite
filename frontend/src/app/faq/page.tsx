@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getFaqPage, getFaqEntries } from "@/lib/content";
-import { FAQItem } from "@/components/faq/faq-item";
+import { FAQItem } from "@/components/FAQItem/FAQItem";
 import { generatePageMetadata } from "@/lib/seo/metadata";
 import styles from "./page.module.css";
 
@@ -32,7 +32,7 @@ export default function FAQPage() {
           <ul className={styles.faqList} role="list">
             {entries.map((entry) => (
               <li key={entry.id}>
-                <FAQItem entry={entry} />
+                <FAQItem id={`faq-${entry.id}`} entry={entry} />
               </li>
             ))}
           </ul>
