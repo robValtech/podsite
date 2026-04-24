@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Episode, PodcastShow } from "@/lib/content/schema";
-import { EpisodeCard } from "@/components/episode/episode-card";
+import { EpisodeCard } from "@/components/EpisodeCard/EpisodeCard";
 import styles from "./home-sections.module.css";
 
 interface RecentEpisodesProps {

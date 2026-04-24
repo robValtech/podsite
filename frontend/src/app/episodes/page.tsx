@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getAllEpisodes } from "@/lib/content";
-import { EpisodeCard } from "@/components/episode/episode-card";
+import { EpisodeCard } from "@/components/EpisodeCard/EpisodeCard";
 import { generatePageMetadata } from "@/lib/seo/metadata";
 import styles from "./page.module.css";
 

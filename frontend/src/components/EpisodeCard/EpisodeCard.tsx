@@ -1,14 +1,19 @@
 import Link from "next/link";
-import type { Episode } from "@/lib/content/schema";
-import styles from "./episode-card.module.css";
+import type { EpisodeCardProps } from "./EpisodeCard.types";
+import styles from "./EpisodeCard.module.css";
 
-interface EpisodeCardProps {
-  episode: Episode;
-}
-
-export function EpisodeCard({ episode }: EpisodeCardProps) {
+export function EpisodeCard({
+  episode,
+  id,
+  className,
+  dataTestId,
+}: EpisodeCardProps) {
   return (
-    <article className={styles.card}>
+    <article
+      className={className ? `${styles.card} ${className}` : styles.card}
+      id={id}
+      data-testid={dataTestId}
+    >
       <div className={styles.cardInner}>
         <div className={styles.meta}>
           <span className={styles.episodeNumber}>
