@@ -58,13 +58,9 @@ If a requested component placement does not fit this structure, STOP and raise t
 - Images and SVGs MUST NOT be assumed to be decorative unless 100% certain. If unsure, raise it for manual review rather than guessing.
 - Components MUST respect `prefers-reduced-motion` in any animation or transition styling.
 - If `id` is required for internal ARIA wiring, it MUST be a mandatory prop. Internal ids MUST be derived from it using the id generation pattern below.
+- Component props live in a separate `Button.types.ts` file and MUST be imported into the source file as a type. The source file should only contain the component implementation and export.
 
-## Styling
-
-- Components MUST use CSS Modules. The `.module.css` file MUST be co-located in the component directory.
-- Design tokens MUST be used for all visual properties (colour, spacing, typography, radius) rather than hardcoded values, so the system is consistent and maintainable.
-
-## Internal id generation pattern
+### Internal id generation pattern
 
 When `id` is needed internally to wire ARIA attributes, derive all child ids from it:
 
@@ -81,7 +77,7 @@ return (
 );
 ```
 
-## BaseComponentProps
+### BaseComponentProps
 
 `BaseComponentProps` is defined in `frontend/src/components/types.ts`. Every component props type MUST extend it.
 
@@ -95,3 +91,13 @@ export type BaseComponentProps = {
   dataTestId?: string;
 };
 ```
+
+## Accessibility
+
+- MUST NOT add role="alert" or any other live region role to a component without a very specific reason and explicit design approval.
+<!-- - If a component has a required accessibility role, state it explicitly in the documentation comment for the component and enforce it with a test. For example, if a component is meant to be used as a landmark region, it should have `role="region"` and the test should assert that this role is present. -->
+
+## Styling
+
+- Components MUST use CSS Modules. The `.module.css` file MUST be co-located in the component directory.
+- Design tokens MUST be used for all visual properties (colour, spacing, typography, radius) rather than hardcoded values, so the system is consistent and maintainable.
