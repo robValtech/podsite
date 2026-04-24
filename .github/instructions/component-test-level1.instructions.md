@@ -1,6 +1,6 @@
 ---
 description: "Use when creating or updating React component tests, Vitest component tests, RTL tests, or accessibility assertions for components."
-applyTo: "@/components/**/*.level1.test.tsx"
+applyTo: "@/components/**/*.test.tsx"
 ---
 
 # Component Test Level 1 Guidance
