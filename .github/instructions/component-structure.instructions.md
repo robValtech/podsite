@@ -99,6 +99,7 @@ export type BaseComponentProps = {
 
 - MUST NOT add role="alert" or any other live region role to a component without a very specific reason and explicit design approval.
 - MUST NOT add placeholder text to form fields without a very specific reason and explicit design approval.
+- ARIA label content MUST NOT repeat the element's implicit role name. Screen readers announce the role automatically, so including it in the label causes redundant announcements. For example, a `<nav>` element is announced as "navigation" — labelling it `aria-label="Footer navigation"` produces "Footer navigation, navigation". The label should be `aria-label="Footer"` instead. Common elements where this applies: `<nav>` (navigation), `<footer>` (contentinfo), `<header>` (banner), `<main>` (main), `<aside>` (complementary), `<form>` (form), `<search>` (search), `<button>` (button), `<a href>` (link). When writing `aria-label` or `aria-labelledby` text, describe **what** the landmark or control is for, not **what type** of element it is.
 <!-- - If a component has a required accessibility role, state it explicitly in the documentation comment for the component and enforce it with a test. For example, if a component is meant to be used as a landmark region, it should have `role="region"` and the test should assert that this role is present. -->
 
 ## Styling
