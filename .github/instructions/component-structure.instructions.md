@@ -59,6 +59,9 @@ If a requested component placement does not fit this structure, STOP and raise t
 - Components MUST respect `prefers-reduced-motion` in any animation or transition styling.
 - If `id` is required for internal ARIA wiring, it MUST be a mandatory prop. Internal ids MUST be derived from it using the id generation pattern below.
 - Component props live in a separate `Button.types.ts` file and MUST be imported into the source file as a type. The source file should only contain the component implementation and export.
+- If the component implements a form control, input, select, textarea, etc., an onChange event handler must be called when the value changes, and the new value must be passed as an argument to the handler. This ensures that the component can be used in controlled forms and that changes to the input value are properly communicated to parent components or form libraries.
+- Interactive button, link, toggle and similar components must an onClick event handler prop that is called when the component is activated by mouse, touch, keyboard, or assistive technology. This ensures that the component can be used in interactive contexts and that user interactions are properly handled.
+- Composite components, such as Tabs, Accordions, Dropdowns, etc., that manage their own internal state and user interactions must provide a clear and consistent API for controlling the component from the outside. This typically includes props for controlling the open/closed state, selected tab, or other relevant state, as well as event handlers for when these states change. This ensures that the component can be used in a variety of contexts and that its behavior can be controlled by parent components or external logic.
 
 ### Internal id generation pattern
 
@@ -95,6 +98,7 @@ export type BaseComponentProps = {
 ## Accessibility
 
 - MUST NOT add role="alert" or any other live region role to a component without a very specific reason and explicit design approval.
+- MUST NOT add placeholder text to form fields without a very specific reason and explicit design approval.
 <!-- - If a component has a required accessibility role, state it explicitly in the documentation comment for the component and enforce it with a test. For example, if a component is meant to be used as a landmark region, it should have `role="region"` and the test should assert that this role is present. -->
 
 ## Styling
