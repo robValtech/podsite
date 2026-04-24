@@ -1,6 +1,6 @@
 ---
 description: "Use when creating or updating React component tests, Vitest component tests, RTL tests, or accessibility assertions for components. Read the accessibility persona collection and report persona coverage for the component in the final response."
-applyTo: "frontend/src/**/*.test.tsx"
+applyTo: "@/components/**/*.test.tsx"
 ---
 
 # Component Test Persona Guidance
