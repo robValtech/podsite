@@ -14,6 +14,8 @@ applyTo: "@/components/**/*.test.tsx"
 
 - Use `user.tab()` until the required element is focused, do not use `element.focus()`
 - Use `user.keyboard('{enter}')` and `user.keyboard(' ')` for Enter and Space key activation
+- Component tests MUST include keyboard interaction tests by default, even if the component is not primarily interactive. This ensures that any interactive elements within the component are accessible by keyboard users and that the component does not introduce any keyboard accessibility issues (for example collapsed accordion item's link is not focusable by accident).
+- When the component contains multiple focusable elements, keyboard navigation tests MUST check for the correct focus order and that all interactive elements are reachable by keyboard.
 
 ## Required test scenarios
 
@@ -24,7 +26,11 @@ applyTo: "@/components/**/*.test.tsx"
 - When id prop is not provided the root element uses a generated id and children use that id for their attributes as appropriate
 - Optional dataTestId prop applies data-testid to the root element and children use this value to generate their own data-testid as appropriate
 - Checks semantic HTML structure (e.g. uses <button> for clickable elements, not <div>)
-- Element accessors use accessible queries (e.g. getByRole, getByLabelText, getByText) rather than test IDs or class names, unless no accessible query is available for a given element
+
+## Element accessors
+
+- Element accessors use accessible queries (e.g. `getByRole`, `getByLabelText`, `getByText`) rather than test IDs or class names, unless no accessible query is available for a given element
+- Where element role and accessible name is important for semantics make sure to specifically test it using semantic query checks (e.g. `getByRole("button", { name: "Submit" })` not `getByText("Submit")` or `getByRole("region", { name: "My Basket" })`)
 
 ## Accessibility checks
 
