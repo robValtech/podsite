@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/layout/site-header";
-import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteFooter } from "@/components/SiteFooter/SiteFooter";
 import { RouteChangeHandler } from "@/components/route-change-handler";
 import { generateSiteMetadata } from "@/lib/seo/metadata";
 import "@/styles/globals.css";

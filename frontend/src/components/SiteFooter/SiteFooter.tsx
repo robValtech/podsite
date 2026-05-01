@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getSiteConfig } from "@/lib/content";
-import styles from "./site-footer.module.css";
+import type { SiteFooterProps } from "./SiteFooter.types";
+import styles from "./SiteFooter.module.css";
 
 const footerLinks = [
   { href: "/", label: "Home" },
@@ -9,12 +10,16 @@ const footerLinks = [
   { href: "/faq", label: "FAQ" },
 ];
 
-export function SiteFooter() {
+export function SiteFooter({ id, className, dataTestId }: SiteFooterProps) {
   const config = getSiteConfig();
   const year = new Date().getFullYear();
 
   return (
-    <footer className={styles.footer} role="contentinfo">
+    <footer
+      className={className ? `${styles.footer} ${className}` : styles.footer}
+      id={id}
+      data-testid={dataTestId}
+    >
       <div className={styles.inner}>
         <div className={styles.brand}>
           <Link
@@ -30,7 +35,7 @@ export function SiteFooter() {
           <p className={styles.tagline}>{config.tagline}</p>
         </div>
 
-        <nav className={styles.nav} aria-label="Footer navigation">
+        <nav className={styles.nav} aria-label="Footer">
           <ul className={styles.navList} role="list">
             {footerLinks.map((link) => (
               <li key={link.href}>
